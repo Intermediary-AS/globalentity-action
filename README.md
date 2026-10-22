@@ -10,7 +10,7 @@ Typical uses:
 
 ## Quick start
 
-1. Get an API key (`gea_live_…`) at [globalentityapi.com/pricing](https://www.globalentityapi.com/pricing).
+1. Get an API key (`gea_live_…`) at [globalentityapi.com/pricing](https://www.globalentityapi.com/pricing). To try it first, start the free trial: after you confirm your email you get a trial key (`gea_trial_…`) with 100 calls for 7 days.
 2. Add it as a secret named `GLOBALENTITY_API_KEY` (Settings → Secrets and variables → Actions).
 3. Add a step to your workflow:
 
@@ -69,7 +69,7 @@ Each invalid row is reported as an error annotation and the step fails. The job 
 
 | Input | Default | Description |
 |---|---|---|
-| `api-key` | — | **Required.** GlobalEntity API key. Always pass it from a secret. |
+| `api-key` | — | **Required.** GlobalEntity API key (`gea_live_…` or a free-trial `gea_trial_…`). Always pass it from a secret. |
 | `operation` | `verify` | `verify`, `verify-file`, `search` or `resolve`. |
 | `type` | `vat` | `vat`, `eori` or `lei` (operation `verify`). |
 | `country` | — | ISO code (e.g. `DK`) for VAT; country name or code (e.g. `Norway`) for search/resolve. |

@@ -123,7 +123,7 @@ export function createClient({ apiKey, apiUrl, timeoutMs, fetchImpl = globalThis
       if (res.status === 401) {
         throw new ActionError(`GlobalEntity API rejected the API key: ${data.message || 'Missing or invalid API key.'} Get a key at https://www.globalentityapi.com/pricing`);
       }
-      if (res.status === 429) throw new ActionError(`Monthly lookup quota exceeded: ${data.message || 'HTTP 429'}`);
+      if (res.status === 429) throw new ActionError(`Lookup quota exceeded: ${data.message || 'HTTP 429'}`);
       if (!res.ok) throw new ActionError(`GlobalEntity API returned HTTP ${res.status} for ${url.pathname}: ${data.message || res.statusText}`);
       return data;
     }

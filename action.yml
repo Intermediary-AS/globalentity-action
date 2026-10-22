@@ -8,7 +8,7 @@ branding:
 
 inputs:
   api-key:
-    description: 'GlobalEntity API key (gea_live_…). Store it as a repository or organization secret.'
+    description: 'GlobalEntity API key (gea_live_… or free-trial gea_trial_…). Store it as a repository or organization secret.'
     required: true
   operation:
     description: 'What to do: verify, verify-file, search or resolve.'
