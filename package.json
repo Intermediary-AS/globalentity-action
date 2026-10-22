@@ -1,0 +1,15 @@
+{
+  "name": "globalentity-action",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub Action: verify EU VAT, EORI and LEI numbers and look up companies with GlobalEntity API.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Intermediary AS",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  }
+}

@@ -1,0 +1,75 @@
+name: 'GlobalEntity Company Verify'
+description: 'Verify EU VAT, EORI and LEI numbers and look up companies in 66 official business registers with GlobalEntity API.'
+author: 'Intermediary AS'
+
+branding:
+  icon: 'check-circle'
+  color: 'green'
+
+inputs:
+  api-key:
+    description: 'GlobalEntity API key (gea_live_…). Store it as a repository or organization secret.'
+    required: true
+  operation:
+    description: 'What to do: verify, verify-file, search or resolve.'
+    required: false
+    default: 'verify'
+  type:
+    description: 'Identifier type for operation "verify": vat, eori or lei.'
+    required: false
+    default: 'vat'
+  country:
+    description: 'Country. ISO code (e.g. DK) for VAT; country name or code (e.g. Norway) for search and resolve.'
+    required: false
+  number:
+    description: 'VAT / EORI / LEI number (verify) or registration number (resolve).'
+    required: false
+  query:
+    description: 'Company name or registration number (operation "search").'
+    required: false
+  name:
+    description: 'Company name (operation "resolve", optional for LEI lookups).'
+    required: false
+  file:
+    description: 'Path to a CSV file with the columns type,country,number (operation "verify-file").'
+    required: false
+  fail-on-invalid:
+    description: 'Fail the step when an identifier is confirmed invalid, or when search finds no company.'
+    required: false
+    default: 'true'
+  fail-on-unknown:
+    description: 'Fail the step when the official source could not confirm validity (e.g. VIES unavailable).'
+    required: false
+    default: 'false'
+  api-url:
+    description: 'Base URL of the API.'
+    required: false
+    default: 'https://www.globalentityapi.com'
+  timeout-seconds:
+    description: 'Timeout per API request, in seconds.'
+    required: false
+    default: '30'
+
+outputs:
+  valid:
+    description: 'true, false or unknown. For verify-file: false if any row is invalid.'
+  name:
+    description: 'Registered company name (first match).'
+  address:
+    description: 'Registered address (first match).'
+  entity-id:
+    description: 'Stable GlobalEntity id (operation "resolve").'
+  trust-score:
+    description: 'Identity Trust Score 0–100 (operation "resolve").'
+  count:
+    description: 'Number of companies found (search) or rows checked (verify-file).'
+  invalid-count:
+    description: 'Number of invalid rows (verify-file).'
+  unknown-count:
+    description: 'Number of rows that could not be confirmed (verify-file).'
+  result:
+    description: 'Full JSON response (verify, search, resolve) or a JSON array of row results (verify-file).'
+
+runs:
+  using: 'node24'
+  main: 'src/index.js'
