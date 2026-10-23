@@ -130,7 +130,7 @@ export function createClient({ apiKey, apiUrl, timeoutMs, fetchImpl = globalThis
   };
 }
 
-const cell = (v) => String(v === undefined || v === null || v === '' ? '—' : v).replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
+const cell = (v) => String(v === undefined || v === null || v === '' ? '—' : v).replace(/\\/g, '\\\\').replace(/\|/g, '\\|').replace(/\r?\n/g, ' ');
 const validText = (v) => (v === true ? 'true' : v === false ? 'false' : 'unknown');
 const validIcon = (v) => (v === true ? '✅ valid' : v === false ? '❌ invalid' : '⚠️ unknown');
 
